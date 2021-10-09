@@ -1,6 +1,7 @@
-package connect4;
+package connect4.models;
 
 import connect4.exception.IllegalMoveException;
+import connect4.types.TokenColor;
 
 public class Board<T> extends Grid<T> {
 
@@ -16,31 +17,25 @@ public class Board<T> extends Grid<T> {
         }
     }
 
-
-    public boolean dropToken(int column, T token) throws IllegalMoveException {
-
-        //User is prompted to type column number 1 - boardWidth, even though available
-        //x positions is 0 - boardWidth-1. Therefore we substract 1 from the number given by the user.
-        column--;
-
-        while (true) {
-            for (int i = super.getHeight() - 1; i >= 0; i--) {
-                if (getElement(column, i) != null) {
-                    continue;
-                }
-                setElement(column, i, token); // Puts the token in the correct x,y position.
-                return true;
-            }
-            throw new IllegalMoveException("No more space in the column, please try again");
-        }
-
-    }
-
     public void clearBoard() {
         for (int i = 0; i < cells.size(); i++) {
             cells.set(i, null);
         }
     }
+
+
+    public boolean dropToken(int column, T token) throws IllegalMoveException {
+        column--;
+
+        for (int i = super.getHeight() - 1; i >= 0; i--) {
+            if (getElement(column, i) == null) {
+                setElement(column, i, token); // Puts the token in the correct x,y position.
+                return true;
+            }
+        }
+        throw new IllegalMoveException("No more space in the column, please try again");
+    }
+
 
     @Override
     public String toString() {
@@ -49,7 +44,7 @@ public class Board<T> extends Grid<T> {
         for (int j = 0; j < this.getHeight(); j++) {
             for (int i = 0; i < this.getWidth(); i++) {
                 if (this.getCells().get(index) != null) {
-                    board.append("| " + ((Token) (this.getCells()).get(index)).getColor().getSymbol() + " ");
+                    board.append("| " + ((TokenColor) (this.getCells()).get(index)).getSymbol() + " ");
                 } else {
                     board.append("|   ");
                 }

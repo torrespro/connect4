@@ -1,11 +1,8 @@
-package connect4.players;
+package connect4.models;
 
 import connect4.exception.IllegalMoveException;
+import connect4.types.TokenColor;
 import java.util.Random;
-
-import connect4.Board;
-import connect4.Token;
-import connect4.TokenColor;
 
 public class AIPlayer implements IPlayer {
 
@@ -30,7 +27,7 @@ public class AIPlayer implements IPlayer {
             int targetColumn = random.nextInt(board.getWidth() + 1);
 
             if (targetColumn > 0 && targetColumn <= board.getWidth()) {
-                dropped = board.dropToken(targetColumn, new Token(color));
+                dropped = board.dropToken(targetColumn, color);
             }
         }
         return dropped;

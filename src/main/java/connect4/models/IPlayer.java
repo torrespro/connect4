@@ -1,8 +1,7 @@
-package connect4.players;
+package connect4.models;
 
-import connect4.Board;
 import connect4.exception.IllegalMoveException;
-import connect4.TokenColor;
+import connect4.types.TokenColor;
 
 /*
  * Methods that are common for both AI and human players. 

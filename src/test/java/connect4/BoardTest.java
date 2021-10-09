@@ -3,6 +3,8 @@ package connect4;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import connect4.exception.IllegalMoveException;
+import connect4.models.Board;
+import connect4.types.TokenColor;
 import org.junit.jupiter.api.Test;
 
 /*
@@ -39,41 +41,41 @@ public class BoardTest {
 	@Test
 	public void printBoardTest() throws IllegalMoveException {
 		
-		board.setElement(4, 3, new Token(TokenColor.RED));
-		board.setElement(3, 2, new Token(TokenColor.RED));
-		board.setElement(2, 1, new Token(TokenColor.RED));
-		board.setElement(1, 0, new Token(TokenColor.RED));
+		board.setElement(4, 3, TokenColor.RED);
+		board.setElement(3, 2, TokenColor.RED);
+		board.setElement(2, 1, TokenColor.RED);
+		board.setElement(1, 0, TokenColor.RED);
 		
 		System.out.println(board);
 		
-		board.dropToken(1, new Token(TokenColor.YELLOW));
-		board.dropToken(3, new Token(TokenColor.YELLOW));
-		board.dropToken(1, new Token(TokenColor.YELLOW));
-		board.dropToken(5, new Token(TokenColor.YELLOW));
+		board.dropToken(1, TokenColor.YELLOW);
+		board.dropToken(3, TokenColor.YELLOW);
+		board.dropToken(1, TokenColor.YELLOW);
+		board.dropToken(5, TokenColor.YELLOW);
 		
 		System.out.println(board);
 	}
 	
 	@Test
 	public void dropToken() throws IllegalMoveException {
-		board.dropToken(1, new Token(TokenColor.YELLOW));
-		board.dropToken(1, new Token(TokenColor.YELLOW));
-		board.dropToken(1, new Token(TokenColor.YELLOW));
-		board.dropToken(1, new Token(TokenColor.YELLOW));
+		board.dropToken(1, TokenColor.YELLOW);
+		board.dropToken(1, TokenColor.YELLOW);
+		board.dropToken(1, TokenColor.YELLOW);
+		board.dropToken(1, TokenColor.YELLOW);
 		
 		for (int i = 4; i < 0; i--) {
-			Token tk = ((Token) board.getElement(0, i));
-			assertEquals(tk.getColor(), TokenColor.YELLOW);
+			TokenColor tk = ((TokenColor) board.getElement(0, i));
+			assertEquals(tk, TokenColor.YELLOW);
 		}
 		
-		board.dropToken(2, new Token(TokenColor.YELLOW));
-		board.dropToken(3, new Token(TokenColor.YELLOW));
-		board.dropToken(4, new Token(TokenColor.YELLOW));
-		board.dropToken(5, new Token(TokenColor.YELLOW));
+		board.dropToken(2, TokenColor.YELLOW);
+		board.dropToken(3, TokenColor.YELLOW);
+		board.dropToken(4, TokenColor.YELLOW);
+		board.dropToken(5, TokenColor.YELLOW);
 		
 		for (int i = 0; i < 4; i++) {
-			Token tk = ((Token) board.getElement(i, 4));
-			assertEquals(tk.getColor(), TokenColor.YELLOW);
+			TokenColor tk = ((TokenColor) board.getElement(i, 4));
+			assertEquals(tk, TokenColor.YELLOW);
 		}
 	}
 	

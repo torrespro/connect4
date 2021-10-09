@@ -1,7 +1,4 @@
-package connect4.rules;
-
-import connect4.Board;
-import connect4.Game;
+package connect4.models;
 
 /*
  * The class that decides if a Board has a winning combination on it.
@@ -12,10 +9,10 @@ import connect4.Game;
  */
 public class Rules<T> {
 
-    private int winCondition = 4;
+    private int winCondition;
     int winLength; // How much space is needed to check to find a winning combination.
 
-    public Rules(Game game, int winCondition) {
+    public Rules(int winCondition) {
         if (winCondition > 1) {
             this.winCondition = winCondition;
         } else {
@@ -23,16 +20,6 @@ public class Rules<T> {
         }
 
         this.winLength = winCondition - 1;
-    }
-
-    public boolean hasWon(Board board) {
-        if (checkHorizontal(board, winCondition) ||
-            checkVertical(board, winCondition) ||
-            checkDiagonal(board, winCondition)) {
-            return true;
-        }
-
-        return false;
     }
 
     public <T> boolean checkHorizontal(Board board, int winCondition) {

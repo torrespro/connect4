@@ -1,8 +1,10 @@
 package connect4;
 
-import connect4.inputOutput.Turn;
-import connect4.players.IPlayer;
-import connect4.players.Player;
+import connect4.models.Board;
+import connect4.models.Turn;
+import connect4.types.TokenColor;
+import connect4.models.IPlayer;
+import connect4.models.Player;
 
 public class TurnTest {
 

@@ -3,7 +3,10 @@ package connect4;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import connect4.rules.Rules;
+import connect4.models.Board;
+import connect4.models.Game;
+import connect4.types.TokenColor;
+import connect4.models.Rules;
 import org.junit.jupiter.api.Test;
 
 public class RulesTest {
@@ -15,114 +18,108 @@ public class RulesTest {
 	@Test
 	public void horizontalWin() {
 
-		board.setElement(3, 4, new Token(TokenColor.RED));
-		board.setElement(2, 4, new Token(TokenColor.RED));
-		board.setElement(1, 4, new Token(TokenColor.RED));
-		board.setElement(0, 4, new Token(TokenColor.RED));
+		for (int i = 0; i < 4; i++) {
+			board.setElement(i, 4, TokenColor.RED);
+		}
 
-		assertTrue(rules.hasWon(board));
+		assertTrue(game.hasWon());
 	}
 
 	@Test
 	public void verticalTest() {
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(4, 3, new Token(TokenColor.RED));
-		board.setElement(4, 2, new Token(TokenColor.RED));
-		board.setElement(4, 1, new Token(TokenColor.RED));
 
-		assertTrue(rules.hasWon(board));
+		for (int i = 1; i < 5; i++) {
+			board.setElement(4, i, TokenColor.RED);
+		}
+
+		assertTrue(game.hasWon());
 	}
 	
 	@Test
 	public void diagonalTest() {
 	
-		board.setElement(0, 4, new Token(TokenColor.RED));
-		board.setElement(1, 3, new Token(TokenColor.RED));
-		board.setElement(2, 2, new Token(TokenColor.RED));
-		board.setElement(3, 1, new Token(TokenColor.RED));
+		board.setElement(0, 4, TokenColor.RED);
+		board.setElement(1, 3, TokenColor.RED);
+		board.setElement(2, 2, TokenColor.RED);
+		board.setElement(3, 1, TokenColor.RED);
 
-		assertTrue(rules.hasWon(board));
+		assertTrue(game.hasWon());
 		board.clearBoard();
 		
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(3, 3, new Token(TokenColor.RED));
-		board.setElement(2, 2, new Token(TokenColor.RED));
-		board.setElement(1, 1, new Token(TokenColor.RED));
+		board.setElement(4, 4, TokenColor.RED);
+		board.setElement(3, 3, TokenColor.RED);
+		board.setElement(2, 2, TokenColor.RED);
+		board.setElement(1, 1, TokenColor.RED);
 
-		assertTrue(rules.hasWon(board));
+		assertTrue(game.hasWon());
 		board.clearBoard();
 		
-		board.setElement(4, 3, new Token(TokenColor.RED));
-		board.setElement(3, 2, new Token(TokenColor.RED));
-		board.setElement(2, 1, new Token(TokenColor.RED));
-		board.setElement(1, 0, new Token(TokenColor.RED));
+		board.setElement(4, 3, TokenColor.RED);
+		board.setElement(3, 2, TokenColor.RED);
+		board.setElement(2, 1, TokenColor.RED);
+		board.setElement(1, 0, TokenColor.RED);
 
-		assertTrue(rules.hasWon(board));
+		assertTrue(game.hasWon());
 		board.clearBoard();
 		
 		
 		//Three in a row, should return false.
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(3, 3, new Token(TokenColor.RED));
-		board.setElement(2, 2, new Token(TokenColor.RED));
+		board.setElement(4, 4, TokenColor.RED);
+		board.setElement(3, 3, TokenColor.RED);
+		board.setElement(2, 2, TokenColor.RED);
 
-		assertFalse(rules.hasWon(board));
+		assertFalse(game.hasWon());
 		board.clearBoard();
 		
 		
 		//Three in a row, should return false
-		board.setElement(0, 4, new Token(TokenColor.RED));
-		board.setElement(1, 3, new Token(TokenColor.RED));
-		board.setElement(2, 2, new Token(TokenColor.RED));
+		board.setElement(0, 4, TokenColor.RED);
+		board.setElement(1, 3, TokenColor.RED);
+		board.setElement(2, 2, TokenColor.RED);
 
-		assertFalse(rules.hasWon(board));
+		assertFalse(game.hasWon());
 		board.clearBoard();
 
 	}
 	
 	@Test
 	public void falsePositives() {
-		
+
+		for (int i = 0; i < 5; i++) {
+			board.setElement(4, i, TokenColor.RED);
+		}
+		board.setElement(4, 1, TokenColor.YELLOW);
 		// Three in a row but four on the same line. Should return false.
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(4, 3, new Token(TokenColor.RED));
-		board.setElement(4, 2, new Token(TokenColor.RED));
-		board.setElement(4, 1, new Token(TokenColor.YELLOW));
-		board.setElement(4, 0, new Token(TokenColor.RED));
 
-		assertFalse(rules.hasWon(board));
+		assertFalse(game.hasWon());
 		board.clearBoard();
-		
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(3, 4, new Token(TokenColor.RED));
-		board.setElement(2, 4, new Token(TokenColor.RED));
-		board.setElement(1, 4, new Token(TokenColor.YELLOW));
-		board.setElement(0, 4, new Token(TokenColor.RED));
 
-		assertFalse(rules.hasWon(board));
+		for (int i = 0; i < 5; i++) {
+			board.setElement(i, 4, TokenColor.RED);
+		}
+		board.setElement(1, 4, TokenColor.YELLOW);
+
+		assertFalse(game.hasWon());
 		
 	}
 	
 	@Test
 	public void differentRules() {
-		Rules rules = new Rules(game, 5);
-		
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(3, 4, new Token(TokenColor.RED));
-		board.setElement(2, 4, new Token(TokenColor.RED));
-		board.setElement(1, 4, new Token(TokenColor.RED));
+		Rules rules = new Rules(5);
 
-		assertFalse(rules.hasWon(board));
+		for (int i = 1; i < 4; i++) {
+			board.setElement(i, 4, TokenColor.RED);
+		}
+
+		assertFalse(game.hasWon());
 		
 		board.clearBoard();
-		
-		board.setElement(4, 4, new Token(TokenColor.RED));
-		board.setElement(3, 4, new Token(TokenColor.RED));
-		board.setElement(2, 4, new Token(TokenColor.RED));
-		board.setElement(1, 4, new Token(TokenColor.RED));
-		board.setElement(0, 4, new Token(TokenColor.RED));
 
-		assertTrue(rules.hasWon(board));
+		for (int i = 0; i < 5; i++) {
+			board.setElement(i, 4, TokenColor.RED);
+		}
+
+		assertTrue(game.hasWon());
 		
 	}
 

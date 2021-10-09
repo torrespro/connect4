@@ -1,4 +1,4 @@
-package connect4;
+package connect4.types;
 
 public enum TokenColor {
 	
@@ -13,4 +13,5 @@ public enum TokenColor {
 	public char getSymbol(){
 		return symbol;
 	}
+
 }

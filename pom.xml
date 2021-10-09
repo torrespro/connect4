@@ -38,7 +38,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>connect4.application.Connect4</mainClass>
+                            <mainClass>connect4.Connect4</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
