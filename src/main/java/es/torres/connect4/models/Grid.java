@@ -1,4 +1,4 @@
-package connect4.models;
+package es.torres.connect4.models;
 
 import java.util.ArrayList;
 import java.util.List;

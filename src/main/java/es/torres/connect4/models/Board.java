@@ -1,7 +1,7 @@
-package connect4.models;
+package es.torres.connect4.models;
 
-import connect4.exception.IllegalMoveException;
-import connect4.types.TokenColor;
+import es.torres.connect4.exception.IllegalMoveException;
+import es.torres.connect4.types.TokenColor;
 
 public class Board<T> extends Grid<T> {
 

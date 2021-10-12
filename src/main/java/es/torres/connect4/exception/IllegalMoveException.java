@@ -1,4 +1,4 @@
-package connect4.exception;
+package es.torres.connect4.exception;
 
 public class IllegalMoveException extends Exception {
 

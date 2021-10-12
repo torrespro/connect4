@@ -2,11 +2,11 @@ package connect4;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import connect4.exception.IllegalMoveException;
-import connect4.models.Board;
-import connect4.types.TokenColor;
-import connect4.models.IPlayer;
-import connect4.models.Player;
+import es.torres.connect4.exception.IllegalMoveException;
+import es.torres.connect4.models.Board;
+import es.torres.connect4.types.TokenColor;
+import es.torres.connect4.models.IPlayer;
+import es.torres.connect4.models.Player;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import org.junit.jupiter.api.Assertions;

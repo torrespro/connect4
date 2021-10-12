@@ -1,7 +1,6 @@
-package connect4.views;
+package es.torres.connect4.views.console;
 
-import connect4.Console;
-import connect4.types.TokenColor;
+import es.torres.connect4.types.TokenColor;
 
 class TokenColorView {
 

@@ -1,4 +1,6 @@
-package connect4.models;
+package es.torres.connect4.models;
+
+import es.torres.connect4.types.TokenColor;
 
 /*
  * The class that decides if a Board has a winning combination on it.
@@ -136,6 +138,58 @@ public class Rules<T> {
                             }
                         }
                     }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean areFourConnected(Board board, TokenColor player) {
+
+        int WIDTH = board.getWidth();
+        int HEIGHT = board.getHeight();
+
+        // horizontalCheck
+        for (int j = 0; j < HEIGHT - 3; j++) {
+            for (int i = 0; i < WIDTH; i++) {
+                if (player.equals(board.getElement(i, j))
+                    && player.equals(board.getElement(i, j + 1))
+                    && player.equals(board.getElement(i, j + 2))
+                    && player.equals(board.getElement(i, j + 3))) {
+                    return true;
+                }
+            }
+        }
+        // verticalCheck
+        for (int i = 0; i < WIDTH - 3; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                if (player.equals(board.getElement(i, j))
+                    && player.equals(board.getElement(i + 1, j))
+                    && player.equals(board.getElement(i + 2, j))
+                    && player.equals(board.getElement(i + 3, j))) {
+                    return true;
+                }
+            }
+        }
+        // ascendingDiagonalCheck
+        for (int i = 3; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT - 3; j++) {
+                if (player.equals(board.getElement(i, j))
+                    && player.equals(board.getElement(i - 1, j + 1))
+                    && player.equals(board.getElement(i - 2, j + 2))
+                    && player.equals(board.getElement(i - 3, j + 3))) {
+                    return true;
+                }
+            }
+        }
+        // descendingDiagonalCheck
+        for (int i = 3; i < WIDTH; i++) {
+            for (int j = 3; j < HEIGHT; j++) {
+                if (player.equals(board.getElement(i, j))
+                    && player.equals(board.getElement(i - 1, j + 1))
+                    && player.equals(board.getElement(i - 2, j + 2))
+                    && player.equals(board.getElement(i - 3, j + 3))) {
+                    return true;
                 }
             }
         }

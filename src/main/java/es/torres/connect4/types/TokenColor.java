@@ -1,4 +1,4 @@
-package connect4.types;
+package es.torres.connect4.types;
 
 public enum TokenColor {
 	

@@ -3,14 +3,14 @@ package connect4;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import connect4.models.Board;
-import connect4.models.Game;
-import connect4.types.TokenColor;
-import connect4.models.Rules;
+import es.torres.connect4.models.Board;
+import es.torres.connect4.models.Game;
+import es.torres.connect4.types.TokenColor;
+import es.torres.connect4.models.Rules;
 import org.junit.jupiter.api.Test;
 
 public class RulesTest {
-	Game game = new Game(1, 7, 6);
+	Game game = new Game();
 	Board board = game.getBoard();
 	Rules rules = game.getRules();
 	
