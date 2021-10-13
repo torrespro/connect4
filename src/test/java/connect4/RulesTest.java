@@ -12,8 +12,7 @@ import org.junit.jupiter.api.Test;
 public class RulesTest {
 	Game game = new Game();
 	Board board = game.getBoard();
-	Rules rules = game.getRules();
-	
+
 	
 	@Test
 	public void horizontalWin() {
