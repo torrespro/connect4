@@ -1,6 +1,5 @@
 package connect4;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import es.torres.connect4.models.AIPlayer;
@@ -17,20 +16,19 @@ public class PlayerTest {
 
     IPlayer player = new HumanPlayer(TokenColor.RED, "Player1");
     IPlayer aiplayer = new AIPlayer(TokenColor.RED);
-    Board board = new Board(5, 5);
+    Board board = new Board(7, 6);
 
-    @Test
-    public void doTurnTestPlayer() {
 
-        InputStream sysInBackup = System.in; // backup System.in to restore it later
-        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-        System.setIn(in);
-
-        assertEquals(1, player.getPlayerInput(board.getWidth()));
-
-        System.setIn(sysInBackup);
-
-    }
+//    @Test
+//    public void doTurnTestPlayer() {
+//        InputStream sysInBackup = System.in; // backup System.in to restore it later
+//        ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
+//        System.setIn(in);
+//
+//        assertEquals(1, player.getPlayerInput(board.getWidth()));
+//
+//        System.setIn(sysInBackup);
+//    }
 
     @Test
     public void doFailTurnTestPlayer() {

@@ -15,8 +15,6 @@ public class Game {
     private ArrayList<IPlayer> players = new ArrayList<IPlayer>();
     private int activePlayer;
 
-    private Rules rules;
-
     public Game() {
         InputStream input = Game.class.getClassLoader().getResourceAsStream("config.properties");
         Properties prop = new Properties();
@@ -41,7 +39,6 @@ public class Game {
         }
 
         board = new Board(width, height);
-        rules = new Rules(WIN_CONDITION);
         this.activePlayer = 0;
 
         switch (gameMode) {
@@ -67,11 +64,6 @@ public class Game {
 
     }
 
-    // For debugging
-    public Rules getRules() {
-        return rules;
-    }
-
     public int getWIN_CONDITION() {
         return WIN_CONDITION;
     }
@@ -92,15 +84,6 @@ public class Game {
         this.players = players;
     }
 
-    public void setRules(Rules rules) {
-        this.rules = rules;
-    }
-
-    public static void winMessage(IPlayer winner, Board board) {
-        System.out.printf("%s won! %n", winner.getColor());
-        System.out.println(board);
-    }
-
     public int getActivePlayer() {
         return activePlayer;
     }
@@ -113,21 +96,12 @@ public class Game {
         this.activePlayer = activePlayer;
     }
 
-    public boolean hasWon() {
-        if (this.rules.checkHorizontal(this.board, WIN_CONDITION) ||
-            this.rules.checkVertical(this.board, WIN_CONDITION) ||
-            this.rules.checkDiagonal(this.board, WIN_CONDITION)) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean hasWon2() {
-        return this.rules.areFourConnected(this.board, getActiveColor());
+    public boolean hasWinner() {
+        return this.board.hasWinner();
     }
 
     public void next() {
-        if (!this.hasWon2()) {
+        if (!this.hasWinner()) {
             this.activePlayer = (this.activePlayer + 1) % NUM_PLAYERS;
         }
     }

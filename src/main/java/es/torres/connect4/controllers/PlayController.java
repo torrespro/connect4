@@ -17,8 +17,8 @@ public class PlayController extends Controller {
         controllersVisitor.visit(this);
     }
 
-    public boolean hasWon() {
-        return this.game.hasWon2();
+    public boolean hasWinner() {
+        return this.game.hasWinner();
     }
 
     public void next() {
