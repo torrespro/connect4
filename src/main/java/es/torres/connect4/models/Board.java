@@ -23,6 +23,9 @@ public class Board<T> extends Grid<T> {
         }
     }
 
+    public boolean isFull() {
+        return cells.contains(null);
+    }
 
     public boolean dropToken(int column, T token) throws IllegalMoveException {
         column--;
@@ -34,6 +37,7 @@ public class Board<T> extends Grid<T> {
             }
         }
         throw new IllegalMoveException("No more space in the column, please try again");
+
     }
 
 

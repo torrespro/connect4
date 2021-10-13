@@ -1,5 +1,6 @@
 package es.torres.connect4.controllers;
 
+import es.torres.connect4.exception.IllegalMoveException;
 import es.torres.connect4.models.Game;
 import es.torres.connect4.models.State;
 import es.torres.connect4.types.TokenColor;
@@ -35,4 +36,5 @@ public abstract class Controller {
         return ((TokenColor) (game.getBoard().getCells()).get(index)).getSymbol();
     }
 
+    public abstract void accept(ControllersVisitor controllersVisitor) throws IllegalMoveException;
 }

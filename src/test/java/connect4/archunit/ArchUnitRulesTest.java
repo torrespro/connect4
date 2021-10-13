@@ -1,4 +1,4 @@
-package connect4;
+package connect4.archunit;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
@@ -10,7 +10,7 @@ import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import es.torres.connect4.Connect4;
 
-@AnalyzeClasses(packagesOf = Connect4.class, importOptions = ImportOption.DoNotIncludeTests.class)
+@AnalyzeClasses(packagesOf = Connect4.class, importOptions = { ImportOption.DoNotIncludeTests.class, DoNotIncludeMainImplementations.class })
 public class ArchUnitRulesTest {
 
     private static final String MODEL_PACKAGE = "..models..";

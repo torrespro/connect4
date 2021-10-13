@@ -47,12 +47,12 @@ public class Game {
         switch (gameMode) {
             case 0: { // Two human players
                 for (int i = 0; i < NUM_PLAYERS; i++) {
-                    players.add(new Player(TokenColor.values()[i], "Player" + i));
+                    players.add(new HumanPlayer(TokenColor.values()[i], "Player" + i));
                 }
                 break;
             }
             case 1: { // One human, one AI
-                players.add(new Player(TokenColor.RED, "Player1"));
+                players.add(new HumanPlayer(TokenColor.RED, "Player1"));
                 players.add(new AIPlayer(TokenColor.YELLOW));
                 break;
             }
@@ -134,5 +134,9 @@ public class Game {
 
     public void dropToken(int targetColumn) throws IllegalMoveException {
         board.dropToken(targetColumn, getPlayers().get(getActivePlayer()).getColor());
+    }
+
+    public boolean isFull() {
+        return this.board.isFull();
     }
 }

@@ -11,7 +11,7 @@ class PlayView {
             new PlayerView(playController).interact();
             playController.next();
             new BoardView().write(playController);
-        } while (!playController.hasWon());
+        } while (!playController.hasWon() || !playController.isFull());
         winMessage(playController.getActiveColor());
         playController.nextState();
     }
@@ -19,5 +19,4 @@ class PlayView {
     public void winMessage(TokenColor winner) {
         System.out.printf("%s (%c) won! %n", winner, winner.getSymbol());
     }
-
 }

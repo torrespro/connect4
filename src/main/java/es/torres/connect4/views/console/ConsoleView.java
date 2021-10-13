@@ -15,13 +15,13 @@ public class ConsoleView implements View {
         this.playView = new PlayView();
     }
 
-    public void start(StartController startController) {
+    @Override
+    public void visit(StartController startController) {
         this.startView.interact(startController);
     }
 
-    public void play(PlayController playController) throws IllegalMoveException {
+    @Override
+    public void visit(PlayController playController) throws IllegalMoveException {
         this.playView.interact(playController);
     }
-
-
 }
