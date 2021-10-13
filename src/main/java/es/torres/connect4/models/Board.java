@@ -53,7 +53,7 @@ public class Board<T> extends Grid<T> {
     }
 
     public void checkWinner(TokenColor color, int row, int col) {
-        // check all values of enum CheckType for a winner
+        // check all values of enum Direction for a winner
         // so HORIZONTAL, VERTICAL, etc
         int enumIndex = 0;
         while (!hasWinner && enumIndex < Direction.values().length) {
