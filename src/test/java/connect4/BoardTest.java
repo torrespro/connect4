@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import es.torres.connect4.exception.IllegalMoveException;
 import es.torres.connect4.models.Board;
+import es.torres.connect4.models.Coordinate;
 import es.torres.connect4.types.TokenColor;
 import org.junit.jupiter.api.Test;
 
@@ -85,7 +86,7 @@ public class BoardTest {
 
 		for (int i = 0; i < 4; i++) {
 			board.setElement(i, 4, TokenColor.RED);
-			board.checkWinner(TokenColor.RED, 4, i);
+			board.checkWinner(new Coordinate(4, i));
 		}
 
 		assertTrue(this.board.hasWinner());
@@ -96,7 +97,7 @@ public class BoardTest {
 
 		for (int i = 1; i < 5; i++) {
 			board.setElement(4, i, TokenColor.RED);
-			board.checkWinner(TokenColor.RED, i, 4);
+			board.checkWinner(new Coordinate(i, 4));
 		}
 
 		assertTrue(this.board.hasWinner());
@@ -109,7 +110,7 @@ public class BoardTest {
 		board.setElement(1, 3, TokenColor.RED);
 		board.setElement(2, 2, TokenColor.RED);
 		board.setElement(3, 1, TokenColor.RED);
-		board.checkWinner(TokenColor.RED, 1, 3);
+		board.checkWinner(new Coordinate( 1, 3));
 
 		assertTrue(this.board.hasWinner());
 		board.clearBoard();
@@ -118,7 +119,7 @@ public class BoardTest {
 		board.setElement(3, 3, TokenColor.RED);
 		board.setElement(2, 2, TokenColor.RED);
 		board.setElement(1, 1, TokenColor.RED);
-		board.checkWinner(TokenColor.RED, 1, 1);
+		board.checkWinner(new Coordinate(1, 1));
 
 		assertTrue(this.board.hasWinner());
 		board.clearBoard();
@@ -127,7 +128,7 @@ public class BoardTest {
 		board.setElement(3, 2, TokenColor.RED);
 		board.setElement(2, 1, TokenColor.RED);
 		board.setElement(1, 0, TokenColor.RED);
-		board.checkWinner(TokenColor.RED, 0, 1);
+		board.checkWinner(new Coordinate(0, 1));
 
 		assertTrue(this.board.hasWinner());
 		board.clearBoard();
@@ -137,7 +138,7 @@ public class BoardTest {
 		board.setElement(4, 4, TokenColor.RED);
 		board.setElement(3, 3, TokenColor.RED);
 		board.setElement(2, 2, TokenColor.RED);
-		board.checkWinner(TokenColor.RED, 2, 2);
+		board.checkWinner(new Coordinate(2, 2));
 
 		assertFalse(this.board.hasWinner());
 		board.clearBoard();
@@ -147,7 +148,7 @@ public class BoardTest {
 		board.setElement(0, 4, TokenColor.RED);
 		board.setElement(1, 3, TokenColor.RED);
 		board.setElement(2, 2, TokenColor.RED);
-		board.checkWinner(TokenColor.RED, 2, 2);
+		board.checkWinner(new Coordinate(2, 2));
 
 		assertFalse(this.board.hasWinner());
 		board.clearBoard();

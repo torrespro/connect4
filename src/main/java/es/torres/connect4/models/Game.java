@@ -1,6 +1,5 @@
 package es.torres.connect4.models;
 
-import es.torres.connect4.exception.IllegalMoveException;
 import es.torres.connect4.types.TokenColor;
 import java.io.IOException;
 import java.io.InputStream;
@@ -106,7 +105,7 @@ public class Game {
         }
     }
 
-    public void dropToken(int targetColumn) throws IllegalMoveException {
+    public void dropToken(int targetColumn) {
         board.dropToken(targetColumn, getPlayers().get(getActivePlayer()).getColor());
     }
 

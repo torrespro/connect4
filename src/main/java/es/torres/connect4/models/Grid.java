@@ -35,9 +35,17 @@ public class Grid<T> {
 	public T getElement(int column, int row) {
 		return cells.get(column + (row * width));
 	}
+
+	public T getElement(Coordinate coordinate) {
+		return cells.get(coordinate.column + (coordinate.row * width));
+	}
 	
 	public void setElement(int column, int row, T element) {
 		 cells.set((column + (row * width)), element);
+	}
+
+	public void setElement(Coordinate coordinate, T element) {
+		cells.set((coordinate.column + (coordinate.row * width)), element);
 	}
 
 }

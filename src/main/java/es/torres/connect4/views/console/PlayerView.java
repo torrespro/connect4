@@ -1,7 +1,6 @@
 package es.torres.connect4.views.console;
 
 import es.torres.connect4.controllers.PlayController;
-import es.torres.connect4.exception.IllegalMoveException;
 
 public class PlayerView {
 
@@ -20,9 +19,15 @@ public class PlayerView {
         do {
             try {
                 int targetColumn = getPlayerInput();
-                this.playController.dropToken(targetColumn);
-                ok = true;
-            } catch (IllegalArgumentException | IllegalMoveException e) {
+                if (!this.playController.isColumnFull(targetColumn)) {
+                    this.playController.dropToken(targetColumn);
+                    ok = true;
+                }
+                else {
+                    Console console = Console.getInstance();
+                    console.writeln( "No more space in the column, please try again");
+                }
+            } catch (IllegalArgumentException e) {
                 Console console = Console.getInstance();
                 console.writeln(e.getMessage());
             }

@@ -15,7 +15,7 @@ La práctica se ha ido haciendo en fases, según íbamos viendo los conceptos en
 branch: https://github.com/torrespro/connect4/tree/domain_model
 
 Creando algunas de las clases del Modelo de Dominio y añadiendo lógica de negocio directamente en ellas para resolver el problema, funciona pero no es parece muy mantenible por nadie en un futuro o por mi mismo en un futuro cercano. En este versión tengo el jugador IA que juega solo, para testear mas fácil.
-Algunas mejoras basadas en las revisiones del código de compañeros durante las clases: Una clase _main_ limpiaq ue solo ejecuta, constructores sin parametros innecesarios, etc 
+Algunas mejoras basadas en las revisiones del código de compañeros durante las clases: Una clase _main_ limpia que solo ejecuta, constructores sin parametros innecesarios, etc 
 
 ### Fase 2: Add Views
 
@@ -27,7 +27,7 @@ Añadimos una primera capa de separación: modelos y vistas, empieza a coger for
 
 branch https://github.com/torrespro/connect4/tree/mvc
 
-Añadimos controladores, clases que manajan la lógica de negocio y hacen de intermediario entre vista y modelo.
+Añadimos controladores, clases que manejan la lógica de negocio y hacen de intermediario entre vista y modelo.
 
     Model --- Controller --- View
 
@@ -42,4 +42,6 @@ Por último añadimos el Visitor (double dispatching) para evitar el abuso de _i
 A nivel de testing he añadido unos unit tests usando [ArchUnit](https://www.archunit.org/), para validar que las capas de la arquitectura son correctas: Views no ven a los Modelos, Views solo usan Controllers, todas las Views estan en el paquete Views, etc 
 Muy util para trabajar en equipos grandes y que todos hablemos el mismo _idioma_ de diseño.
 
-Me ha gustado mucho ir viendo en clase y personalmente como evoluacionaba la aplicación, funcionando en cada fase pero siendo mejorada a nivel diseño, mantenibilidad y legibilidad. Hoy en día reviso más código del que escribo y es útil ver el proceso desde el inicio.
+Me ha gustado mucho ir viendo en clase y personalmente como evolucionaba la aplicación, funcionando en cada fase pero siendo mejorada a nivel diseño, mantenibilidad y legibilidad. Hoy en día reviso más código del que escribo y es útil ver el proceso desde el inicio.
+
+Dudas: AIPlayer mezcla View y Modelo
